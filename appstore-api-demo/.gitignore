@@ -1,0 +1,39 @@
+# Dependencies
+node_modules/
+
+# Secrets — NEVER commit these
+backend/.env
+backend/apps.json
+backend/*.p8
+*.p8
+
+# React Native / Metro
+.expo/
+dist/
+frontend/.bundle/
+frontend/vendor/
+
+# iOS (CocoaPods build artifacts)
+frontend/ios/Pods/
+frontend/ios/build/
+frontend/ios/*.xcworkspace/xcuserdata/
+
+# Android (Gradle build artifacts)
+frontend/android/.gradle/
+frontend/android/build/
+frontend/android/app/build/
+frontend/android/local.properties
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+
+# Monitor status snapshot
+backend/status-state.json
+
+# Change auditor (local state)
+backend/audit.log
+backend/audit-snapshots/

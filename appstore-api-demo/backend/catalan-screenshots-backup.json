@@ -1,0 +1,24 @@
+{
+  "app": "Bruno Farmora",
+  "version": "1.0",
+  "locale": "ca",
+  "capturedFor": "pre-delete backup",
+  "sets": [
+    {
+      "setId": "05f1d9ec-461e-44e1-9f8d-eb609256fd95",
+      "displayType": "APP_IPHONE_65",
+      "shots": [
+        {
+          "id": "d088310f-0cb8-488a-a755-5a3cbff4b940",
+          "fileName": "1.png",
+          "state": "COMPLETE"
+        },
+        {
+          "id": "46a34678-5801-4dd5-a9e7-4eeb659111fb",
+          "fileName": "2.png",
+          "state": "AWAITING_UPLOAD"
+        }
+      ]
+    }
+  ]
+}

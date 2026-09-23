@@ -1,0 +1,23 @@
+[
+  {
+    "name": "My First App",
+    "issuerId": "69a6de70-03db-47e3-e053-5b8c7c11a4d1",
+    "keyId": "ABC123DEFG",
+    "privateKeyPath": "./AuthKey_ABC123DEFG.p8",
+    "appId": "1234567890",
+    "proxyUrl": "",
+    "screenshotsDir": "./screenshots/my-first-app",
+    "screenshotsDirForAb": "./screenshots/my-first-app-ab",
+    "isGrey": false
+  },
+  {
+    "name": "Another App (different account)",
+    "issuerId": "11111111-2222-3333-4444-555555555555",
+    "keyId": "ZYX987WVUT",
+    "privateKeyPath": "./AuthKey_ZYX987WVUT.p8",
+    "appId": "9876543210",
+    "proxyUrl": "socks5://user:pass@host:1080",
+    "screenshotsDir": "./screenshots/another-app",
+    "isGrey": true
+  }
+]
