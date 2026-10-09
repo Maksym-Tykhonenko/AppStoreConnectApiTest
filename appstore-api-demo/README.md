@@ -86,6 +86,7 @@ one object per app (each with its own account credentials):
 | `isGrey` | `false` = actively watched (polled every interval, whole group reported on any change). `true` = hands-off (polled once a day, only for liveness + Game Center). |
 | `Jira` | Free-form label shown in Telegram (`🎫 Jira: …`). |
 | `ignoreRemoved` | `true` = never show/alert `🚫 Removed from the App Store` for this app (e.g. casino apps flagged CANNOT_SELL for known reasons). |
+| `notPublishedYet` | `true` = always show `🆕 Not published yet (first release)` instead of `🚫 Removed` and never alert as removed — for a first release that isn't numbered 1.0 / 1.0.0 (e.g. v1.1). |
 
 > If `apps.json` is missing, the backend falls back to a **single** app built from
 > the `.env` vars (`ISSUER_ID` / `KEY_ID` / `PRIVATE_KEY_PATH` / `APP_ID`).
@@ -197,7 +198,8 @@ Each app block shows: `📱 name`, `🎫 Jira`, status line with a colour dot
 
 "Removed" = not for sale in any territory **and** the app was published at some
 point (a version reached READY_FOR_SALE); a never-published first release is
-"Not published yet", not removed. `ignoreRemoved: true` suppresses it per app.
+"Not published yet", not removed. `ignoreRemoved: true` suppresses it per app;
+`notPublishedYet: true` forces "Not published yet" per app.
 
 ---
 

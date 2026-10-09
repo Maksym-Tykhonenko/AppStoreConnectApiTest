@@ -76,6 +76,10 @@ function normalize(list) {
     // Per-app exception: suppress the "🚫 Removed from the App Store" line/alert
     // for this app (e.g. casino apps flagged CANNOT_SELL for known reasons).
     ignoreRemoved: !!t.ignoreRemoved,
+    // Per-app exception: always show "🆕 Not published yet (first release)"
+    // instead of "🚫 Removed" and never treat the app as removed — for a first
+    // release whose version number isn't 1.0 / 1.0.0 (e.g. v1.1).
+    notPublishedYet: !!t.notPublishedYet,
   }));
 }
 

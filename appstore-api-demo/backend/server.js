@@ -978,6 +978,7 @@ async function collectStatuses(
         name: app_.name,
         jira: t.jira,
         ignoreRemoved: t.ignoreRemoved,
+        notPublishedYet: t.notPublishedYet,
         version: v, // { versionString, state, createdDate } | null
         forSale: sale ? sale.forSale : null,
         gc, // { enabled, groups, leaderboards, achievements } | { error } | undefined
@@ -990,6 +991,7 @@ async function collectStatuses(
         name: t.name,
         jira: t.jira,
         ignoreRemoved: t.ignoreRemoved,
+        notPublishedYet: t.notPublishedYet,
         version: null,
         forSale: null,
         // network/proxy failures (no response) are transient — flagged so the
@@ -1063,9 +1065,11 @@ function formatBlock(s, since) {
     // A first release (v1.0 / 1.0.0) that isn't for sale hasn't been *removed* —
     // it simply hasn't been published yet, so you can't find it by link. Only
     // an app that was already out there and then pulled is "Removed".
-    // `ignoreRemoved` is a per-app exception that suppresses the Removed line.
+    // `ignoreRemoved` is a per-app exception that suppresses the Removed line;
+    // `notPublishedYet` forces the first-release line whatever the version.
     const ver = v ? v.versionString : "";
-    const firstRelease = ver === "1.0" || ver === "1.0.0";
+    const firstRelease =
+      s.notPublishedYet || ver === "1.0" || ver === "1.0.0";
     if (firstRelease) {
       rows.push("🆕 <b>Not published yet</b> (first release)");
     } else if (!s.ignoreRemoved) {
@@ -1166,8 +1170,13 @@ async function runGrey(list, nowMs) {
       // If we can't tell, err on the safe side: treat as "not removed".
       everPublished = false;
     }
-    // ignoreRemoved: per-app exception — never treat this app as removed.
-    const removed = s.forSale === false && everPublished && !s.ignoreRemoved;
+    // ignoreRemoved / notPublishedYet: per-app exceptions — never treat this
+    // app as removed.
+    const removed =
+      s.forSale === false &&
+      everPublished &&
+      !s.ignoreRemoved &&
+      !s.notPublishedYet;
     const alive = !removed;
     const gcSig = gameCenter.signature(s.gc); // null if GC unreadable this poll
     // If GC couldn't be read, carry the previous GC part forward (don't false-alarm).
